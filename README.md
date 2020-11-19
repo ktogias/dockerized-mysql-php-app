@@ -13,3 +13,6 @@
 
 ## Run php container
     docker run --rm -d -p 8080:80 -v ./php:/var/www/php:Z --network dockerizedmysqlphpapp_net --name dockerizedmysqlphpapp-php dockerizedmysqlphpapp-php:latest
+    
+## View in browser
+    http://localhost:8080

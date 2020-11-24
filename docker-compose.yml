@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  dockerizedmysqlphpapp-mysql:
+    build: ./mysql
+    image: dockerizedmysqlphpapp-mysql:latest
+    container_name: dockerizedmysqlphpapp-mysql
+    ports: 
+      - "3306:3306"
+    volumes:
+      - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:Z
+  dockerizedmysqlphpapp-php:
+    build: ./php
+    image: dockerizedmysqlphpapp-php:latest
+    container_name: dockerizedmysqlphpapp-php
+    ports: 
+      - "8080:80"
+    volumes: 
+      - ./php/app:/var/www/app:Z
+    environment:
+      DB_HOST: dockerizedmysqlphpapp-mysql
+    links:
+      - dockerizedmysqlphpapp-mysql

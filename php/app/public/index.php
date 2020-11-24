@@ -26,4 +26,4 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 $conn->close();
-echo 'Thats all folks!!!1111';
+echo 'Thats all folks!!!';
